@@ -21,8 +21,7 @@ def encoding_type():
 
 def selection(user_input):
     if user_input == "1":
-        search_files(keyword_search())
-        search_files(encoding_type())
+        search_files(keyword_search(), encoding_type())
     else:
         print "Invalid input"
 
@@ -41,18 +40,17 @@ def search_files(keyword, type_encoding):
             current_file.close()
             if keyword in decoded_text:
                 all_text = decoded_text
-                print""
-                print "The number of files searched through to find the password was: {}".format(pw_file_count)
-    print "The total number of files searched through is: {}".format(total_file_count)
+                print "The total number of files searched through is: {}".format(total_file_count)
+                search_result(pw_file_count, decoded_text, keyword)
+            # else:
+               #  print "No file has been found with that keyword"
+
+
+def search_result(pwf_count, text, kw):
     print""
-    print "The text in the file is: {}".format(all_text)
-    split_text(all_text, keyword)
-    file_found(all_text)
-
-
-def file_found(text):
-    if text == "":
-        print "File has not been found"
+    print "The number of files searched through to find the password was: {}".format(pwf_count)
+    print "The text in the file is: {}".format(text)
+    split_text(text, kw)
 
 
 def split_text(text, keyword):  # index of whole file to remove and print pw
