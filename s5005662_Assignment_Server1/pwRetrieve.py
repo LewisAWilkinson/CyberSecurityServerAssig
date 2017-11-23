@@ -41,12 +41,13 @@ def search_files(keyword, type_encoding):
             decoded_text = encoded_text.decode(encoding=type_encoding)
             current_file.close()
             if keyword in decoded_text:
-                all_text = decoded_text
                 print ""
                 search_result(pw_file_count, decoded_text, keyword)
         if decoded_text == "":
             print "No file has been found with that keyword"
+    print ""
     print "The total number of files searched through is: {}".format(total_file_count)
+
 
 def search_result(pwf_count, text, kw):
     print "The number of files searched through to find the password was: {}".format(pwf_count)
