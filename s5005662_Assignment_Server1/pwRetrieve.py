@@ -1,5 +1,5 @@
 import os
-import matplotlib
+from matplotlib import pyplot
 
 
 def menu_input():
