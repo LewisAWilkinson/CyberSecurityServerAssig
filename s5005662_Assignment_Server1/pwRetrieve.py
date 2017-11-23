@@ -11,15 +11,15 @@ def menu_input():
     return raw_input("Input menu select: ")
 
 
+def keyword_search():
+    return raw_input("Enter keyword to search by: ")
+
+
 def selection(user_input):
     if user_input == "1":
         search_files(keyword_search())
     else:
         print "Invalid input"
-
-
-def keyword_search():
-    return raw_input("Enter keyword to search by: ")
 
 
 def search_files(keyword):
@@ -36,14 +36,20 @@ def search_files(keyword):
             current_file.close()
             if keyword in decoded_text:
                 all_text = decoded_text
+                print("")
                 print "The number of files searched through to find the password was: {}".format(pw_file_count)
     print "The total number of files searched through is: {}".format(total_file_count)
-    print "The text from the file found was: {}",format(all_text)
-    return all_text
-    pw_text = all_text
+    print("")
+    print "The text in the file is: {}".format(all_text)
+    split_text(all_text)
 
 
-# def split_text():
+def split_text(text):  # index of whole file to remove and print pw
+    pw_text = text.index("Millenium2000")
+    pw_text = text[200+14:]
+    print "The password is: {}".format(pw_text)
+
+
 
 selection(menu_input())
 
