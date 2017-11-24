@@ -1,6 +1,6 @@
 import os
-from matplotlib import pyplot
-
+from matplotlib import pyplot as mpl
+import numpy
 
 def menu_input():
     print""
@@ -44,14 +44,14 @@ def search_files(keyword, type_encoding):
                 print ""
                 search_result(pw_file_count, decoded_text, keyword)
         if decoded_text == "":
-            print "No file has been found with that keyword"
+            print "No file has been found with that keyword or encoding type"
     print ""
     print "The total number of files searched through is: {}".format(total_file_count)
 
 
 def search_result(pwf_count, text, kw):
     print "The number of files searched through to find the password was: {}".format(pwf_count)
-    print""
+    print ""
     print "The text in the file is: {}".format(text)
     split_text(text, kw)
 
@@ -60,7 +60,6 @@ def split_text(text, keyword):  # index of whole file to remove and print pw
     pw_text = text.index(str(keyword))
     pw_text = text[200+14:]
     print "The password is: {}".format(pw_text)
-
 
 
 selection(menu_input())
