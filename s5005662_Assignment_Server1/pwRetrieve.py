@@ -38,7 +38,7 @@ def search_files(keyword, type_encoding):
             total_file_count += 1
             current_file = open(path, "r")
             encoded_text = current_file.read()
-            decoded_text = encoded_text.decode(encoding=type_encoding)
+            decoded_text = encoded_text.decode(encoding = type_encoding)
             current_file.close()
             if keyword in decoded_text:
                 print ""
@@ -57,9 +57,9 @@ def search_result(pwf_count, text, kw):
 
 
 def split_text(text, keyword):  # index of whole file to remove and print pw
-    pw_text = text.index(str(keyword))
-    pw_text = text[200+14:]
-    print "The password is: {}".format(pw_text)
+    pw_index = text.index(str(keyword))
+    text = text[pw_index+14:]
+    print "The password is: {}".format(text)
 
 
 selection(menu_input())
