@@ -2,12 +2,13 @@ import os
 from matplotlib import pyplot as mpl
 import numpy
 
+
 def menu_input():
-    print""
-    print"Menu Options:"
-    print"1: Search through files to find a keyword"
-    print"2: Display a histogram of the data found"
-    print""
+    print ""
+    print "Menu Options:"
+    print "1: Search through files to find a keyword"
+    print "2: Exit program"
+    print ""
     return raw_input("Input menu select: ")
 
 
@@ -24,8 +25,10 @@ def encoding_type():
 def selection(user_input):
     if user_input == "1":
         search_files(keyword_search(), encoding_type())
+    elif user_input == "2":
+        quit()
     else:
-        print "Invalid input"
+       print "Invalid input"
 
 
 def search_files(keyword, type_encoding):
@@ -38,13 +41,11 @@ def search_files(keyword, type_encoding):
             total_file_count += 1
             current_file = open(path, "r")
             encoded_text = current_file.read()
-            decoded_text = encoded_text.decode(encoding = type_encoding)
+            decoded_text = encoded_text.decode(encoding=type_encoding)
             current_file.close()
             if keyword in decoded_text:
                 print ""
                 search_result(pw_file_count, decoded_text, keyword)
-        if decoded_text == "":
-            print "No file has been found with that keyword or encoding type"
     print ""
     print "The total number of files searched through is: {}".format(total_file_count)
 
@@ -62,6 +63,24 @@ def split_text(text, keyword):  # index of whole file to remove and print pw
     print "The password is: {}".format(text)
 
 
-selection(menu_input())
+def menu2_input():
+    print ""
+    print "Menu Options:"
+    print "1: Create a histogram of data"
+    print "2: Exit program"
+    return raw_input("Input menu select: ")
 
+
+def selection2():
+    if user_input == "1":
+        create_histogram()
+    else:
+        print "Invalid input"
+
+
+def create_histogram
+
+
+selection(menu_input())
+selection2(menu2_input())
 
