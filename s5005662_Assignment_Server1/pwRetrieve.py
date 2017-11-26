@@ -71,14 +71,15 @@ def menu2_input():
     return raw_input("Input menu select: ")
 
 
-def selection2():
-    if user_input == "1":
+def selection2(user_input2):
+    if user_input2 == "1":
         create_histogram()
     else:
         print "Invalid input"
 
 
-def create_histogram
+def create_histogram():
+    print "Hello"
 
 
 selection(menu_input())
