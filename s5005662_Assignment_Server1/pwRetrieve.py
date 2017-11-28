@@ -1,6 +1,7 @@
 import os
+import zipfile as zfile
 from matplotlib import pyplot as mpl
-import numpy
+import numpy as nmpy
 
 
 def menu_input():
@@ -28,7 +29,7 @@ def selection(user_input):
     elif user_input == "2":
         quit()
     else:
-       print "Invalid input"
+        print "Invalid input"
 
 
 def search_files(keyword, type_encoding):
@@ -61,6 +62,7 @@ def split_text(text, keyword):  # index of whole file to remove and print pw
     pw_index = text.index(str(keyword))
     text = text[pw_index+14:]
     print "The password is: {}".format(text)
+    unzip_secret(text)
 
 
 def menu2_input():
@@ -78,8 +80,19 @@ def selection2(user_input2):
         print "Invalid input"
 
 
+def unzip_secret(pw):
+    zf = zfile.ZipFile("received_files/secret.zip")
+    zf.extractall("received_files", pwd=pw)
+
+
 def create_histogram():
-    print "Hello"
+    y = nmpy.genfromtxt('received_files/data.txt')
+    mpl.hist(y, 50, normed=1, facecolor="y", edgecolor="g")
+    mpl.xlabel("X-axis")
+    mpl.ylabel("Y-axis")
+    mpl.title("Histogram of data.txt")
+    mpl.grid(True)
+    mpl.show()
 
 
 selection(menu_input())
