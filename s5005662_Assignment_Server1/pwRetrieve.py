@@ -2,70 +2,40 @@ import os  # Importing functions that shall be used throughout the program
 import zipfile as zfile
 from matplotlib import pyplot as mpl
 import numpy as nmpy
+import unzip
+import searchFiles as sFiles
 
 
-def menu_input():  # Outputting options for
+def menu1_input():  # First menu allowing the user to search through the files or quit the program
     print ""
     print "Menu Options:"
     print "1: Search through files to find a keyword"
     print "2: Exit program"
     print ""
-    return raw_input("Input menu select: ")  # Returning the user input to the
+    return raw_input("Input menu select: ")  # Returning the input for later use
 
 
-def keyword_search():
+def keyword_search():  # Allows the user to search for a keyword in the file search
     print ""
     return raw_input("Enter keyword to search by: ")
 
 
-def encoding_type():
+def encoding_type():  # Allows the user to choose the decoding style for the file's text
     print ""
     return raw_input("Enter the decoding style: ")
 
 
-def selection(user_input):
+def selection(user_input):  # Takes the menu1 input and performs the function the user has selected
     if user_input == "1":
-        search_files(keyword_search(), encoding_type())
+        sFiles.search_files(keyword_search(), encoding_type())  # Passes the result of the two functions into search_files
     elif user_input == "2":
         quit()
     else:
         print "Invalid input"
 
 
-def search_files(keyword, type_encoding):
-    pw_file_count = 0
-    total_file_count = 0
-    for root, dirs, files in os.walk("received_files/documents"):
-        for each_file in files:
-            path = root + "/" + each_file
-            pw_file_count += 1
-            total_file_count += 1
-            current_file = open(path, "r")
-            encoded_text = current_file.read()
-            decoded_text = encoded_text.decode(encoding=type_encoding)
-            current_file.close()
-            if keyword in decoded_text:
-                print ""
-                search_result(pw_file_count, decoded_text, keyword)
-    print ""
-    print "The total number of files searched through is: {}".format(total_file_count)
 
-
-def search_result(pwf_count, text, kw):
-    print "The number of files searched through to find the password was: {}".format(pwf_count)
-    print ""
-    print "The text in the file is: {}".format(text)
-    split_text(text, kw)
-
-
-def split_text(text, keyword):
-    pw_index = text.index(str(keyword))
-    text = text[pw_index+14:]
-    print "The password is: {}".format(text)
-    unzip_secret(text)
-
-
-def menu2_input():
+def menu2_input():  # Second menu where the user can select whether to display a histogram or quit the program
     print ""
     print "Menu Options:"
     print "1: Create a histogram of data"
@@ -73,28 +43,24 @@ def menu2_input():
     return raw_input("Input menu select: ")
 
 
-def selection2(user_input2):
+def selection2(user_input2):  # Takes the menu2 input and performs the function the user has selected
     if user_input2 == "1":
         create_histogram()
+    elif user_input2 == "2":
+        quit()
     else:
         print "Invalid input"
 
 
-def unzip_secret(pw):
-    zf = zfile.ZipFile("received_files/secret.zip")
-    zf.extractall("received_files", pwd=pw)
-
-
-def create_histogram():
+def create_histogram():  # Creating a histogram of data using the data.txt
     y = nmpy.genfromtxt('received_files/data.txt')
-    mpl.hist(y, 50, normed=1, facecolor="y", edgecolor="g")
-    mpl.xlabel("X-axis")
-    mpl.ylabel("Y-axis")
-    mpl.title("Histogram of data.txt")
-    mpl.grid(True)
+    mpl.hist(y, 50, normed=1, facecolor="y", edgecolor="g")  # Cosmetic changes to the histogram
+    mpl.xlabel("X-axis")  # Labelling the axis
+    mpl.ylabel("Y-axis")  # ^
+    mpl.title("Histogram of data.txt")  # Titling the histogram
+    mpl.grid(True)  # Showing a grid to make reading the histogram easier
     mpl.show()
 
 
-selection(menu_input())
-selection2(menu2_input())
-
+selection(menu1_input())  # Calling the selection function using the returned value from menu1_input
+selection2(menu2_input())  # Calling the selection function using the returned value from menu2_input
