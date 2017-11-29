@@ -28,7 +28,8 @@ def encoding_type():  # Allows the user to choose the decoding style for the fil
 
 def selection(user_input):  # Takes the menu1 input and performs the function the user has selected
     if user_input == "1":
-        sFiles.search_files(keyword_search(), encoding_type())  # Passes the result of the two functions into search_files
+        sFiles.search_files(keyword_search(), encoding_type())  # Passes the result of the two functions into
+        # search_files
     elif user_input == "2":
         quit()
     else:
