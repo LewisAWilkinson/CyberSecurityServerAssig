@@ -1,8 +1,3 @@
-import os  # Importing functions that shall be used throughout the program
-import zipfile as zfile
-from matplotlib import pyplot as mpl
-import numpy as nmpy
-import unzip
 import searchFiles as sFiles
 import createHistogram as cF
 
@@ -51,9 +46,6 @@ def selection2(user_input2):  # Takes the menu2 input and performs the function 
         quit()
     else:
         print "Invalid input"
-
-
-
 
 
 selection(menu1_input())  # Calling the selection function using the returned value from menu1_input
