@@ -1,16 +1,16 @@
-import os
+import os  # Importing functions that shall be used throughout the program
 import zipfile as zfile
 from matplotlib import pyplot as mpl
 import numpy as nmpy
 
 
-def menu_input():
+def menu_input():  # Outputting options for
     print ""
     print "Menu Options:"
     print "1: Search through files to find a keyword"
     print "2: Exit program"
     print ""
-    return raw_input("Input menu select: ")
+    return raw_input("Input menu select: ")  # Returning the user input to the
 
 
 def keyword_search():
@@ -58,7 +58,7 @@ def search_result(pwf_count, text, kw):
     split_text(text, kw)
 
 
-def split_text(text, keyword):  # index of whole file to remove and print pw
+def split_text(text, keyword):
     pw_index = text.index(str(keyword))
     text = text[pw_index+14:]
     print "The password is: {}".format(text)
