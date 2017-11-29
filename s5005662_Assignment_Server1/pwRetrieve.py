@@ -4,6 +4,7 @@ from matplotlib import pyplot as mpl
 import numpy as nmpy
 import unzip
 import searchFiles as sFiles
+import createHistogram as cF
 
 
 def menu1_input():  # First menu allowing the user to search through the files or quit the program
@@ -34,7 +35,6 @@ def selection(user_input):  # Takes the menu1 input and performs the function th
         print "Invalid input"
 
 
-
 def menu2_input():  # Second menu where the user can select whether to display a histogram or quit the program
     print ""
     print "Menu Options:"
@@ -45,21 +45,14 @@ def menu2_input():  # Second menu where the user can select whether to display a
 
 def selection2(user_input2):  # Takes the menu2 input and performs the function the user has selected
     if user_input2 == "1":
-        create_histogram()
+        cF.create_histogram()
     elif user_input2 == "2":
         quit()
     else:
         print "Invalid input"
 
 
-def create_histogram():  # Creating a histogram of data using the data.txt
-    y = nmpy.genfromtxt('received_files/data.txt')
-    mpl.hist(y, 50, normed=1, facecolor="y", edgecolor="g")  # Cosmetic changes to the histogram
-    mpl.xlabel("X-axis")  # Labelling the axis
-    mpl.ylabel("Y-axis")  # ^
-    mpl.title("Histogram of data.txt")  # Titling the histogram
-    mpl.grid(True)  # Showing a grid to make reading the histogram easier
-    mpl.show()
+
 
 
 selection(menu1_input())  # Calling the selection function using the returned value from menu1_input
