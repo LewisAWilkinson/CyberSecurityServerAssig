@@ -46,7 +46,3 @@ def selection2(user_input2):  # Takes the menu2 input and performs the function 
         quit()
     else:
         print "Invalid input"
-
-
-selection(menu1_input())  # Calling the selection function using the returned value from menu1_input
-selection2(menu2_input())  # Calling the selection function using the returned value from menu2_input

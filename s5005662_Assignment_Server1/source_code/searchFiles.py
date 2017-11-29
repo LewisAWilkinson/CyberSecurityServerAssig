@@ -5,8 +5,7 @@ import unzip
 def search_files(keyword, type_encoding):  # Searches through the file structure
     pw_file_count = 0
     total_file_count = 0
-    os.chdir("..")
-    for root, dirs, files in os.walk("received_files/documents"):
+    for root, dirs, files in os.walk("s5005662_Assignment_Server1/received_files/documents"):
         for each_file in files:
             path = root + "/" + each_file
             pw_file_count += 1  # Incrementing the file counts
