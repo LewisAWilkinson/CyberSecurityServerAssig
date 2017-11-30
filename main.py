@@ -1,5 +1,5 @@
 import s5005662_Assignment_Server1.source_code.pwRetrieve as pWR  # Importing pwRetrieve
-import s5005662_Assignment_Server2.source_code.decoder as dCR
+import s5005662_Assignment_Server2.source_code.decode as dC # Importing decode22
 
 
 def main_menu():
@@ -13,7 +13,7 @@ def main_selection(main_menu_input):
         pWR.selection(pWR.menu1_input())  # Calling the selection function using the returned value from menu1_input
         pWR.selection2(pWR.menu2_input())  # Calling the selection function using the returned value from menu2_input
     elif main_menu_input == "2":
-        print dCR.decode_text()
+        dC.decode_text()
     else:
         print "Invalid input"
 
