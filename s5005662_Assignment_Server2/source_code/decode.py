@@ -10,12 +10,13 @@ def decode_text():
     decode_text_end(coded_text)
 
 
-def decode_text_end(d_text):  # 46 chars before special message so 92 before
-    d_text = d_text[92:]
-    print d_text
-    num = dCR.decodeID(d_text, "5005662")  # 85785046808565290219230888485608371060
-    num1 = dCR.bin2utf(num)
-    print num1
+def decode_text_end(c_text):
+    id_decode_bin = dCR.decodeID(c_text, "s5005662")
+    print id_decode_bin
+    print""
+    id_decode_text = dCR.bin2utf(id_decode_bin)
+    print id_decode_text
+
 
 
 

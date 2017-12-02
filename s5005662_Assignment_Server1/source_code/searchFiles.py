@@ -16,12 +16,15 @@ def search_files(keyword, type_encoding):  # Searches through the file structure
             # type the user specified, and placed in the variable decoded_text
             current_file.close()
             if keyword in decoded_text:  # Searches through the contents of the file for the keyword the user specified
+                print "The path to the file is: {}".format(path)  # Printing the path to the file
+                print ""
                 search_result(pw_file_count, decoded_text, keyword)  # If the keyword is found within the text of the
                 # entire contents of the file is sent to the function search_result, along with the count until the
                 # password is found, and the keyword the user searched for
     print ""
     print ""
-    print "The total number of files searched through is: {}".format(total_file_count)
+    print "The total number of files searched through is: {}".format(total_file_count)  # Printing the total number of
+    # files searched through
 
 
 def search_result(pwf_count, text, kw):  # Printing the results of the search
