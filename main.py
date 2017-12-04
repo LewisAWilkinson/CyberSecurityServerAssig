@@ -12,7 +12,7 @@ def main_selection(main_menu_input):
     if main_menu_input == "1":
         pWR.selection(pWR.menu1_input())  # Calling the selection function using the returned value from menu1_input
         pWR.selection2(pWR.menu2_input())  # Calling the selection function using the returned value from menu2_input
-        go_to_server2()
+        go_to_server2()  # Calling the go_to_server2 function
     elif main_menu_input == "2":
         dC.decode_text()
     else:
@@ -23,7 +23,7 @@ def go_to_server2():
     print ""
     s2_input = raw_input("Would you like to access server 2? (Y/N): ")
     if s2_input == "Y" or s2_input == "y":
-        main_selection("2")
+        main_selection("2")  # Calling the main_selection function and passing the value of 2 into it
     elif s2_input == "N" or s2_input == "n":
         quit()
     else:
@@ -31,5 +31,3 @@ def go_to_server2():
 
 
 main_selection(main_menu())
-
-
